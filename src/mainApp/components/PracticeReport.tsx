@@ -8,7 +8,7 @@ const provisionalText =
 export const PracticeReport = () => {
   return (
     <>
-      <section className="mx-52">
+      <section className="mx-52 flex-1">
         {/* El titulo por defecto pienso que van a ser Practicas iniciales(?) */}
         <h1 className="mt-8 text-4xl font-bold">Prácticas Iniciales</h1>
         {/* Avatar
