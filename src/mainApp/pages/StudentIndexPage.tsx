@@ -1,7 +1,8 @@
-import { FC, useMemo, useState } from "react"
+import { FC, useMemo, useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { usuario } from '../../interfaces/components';
 import { getFormatDistanceToNow, formatDateToWords } from '../../utils/dateFunctions';
+import { InformeContext } from '../context/';
 
 interface StudentIndexPageProps {
     usuario: usuario
@@ -10,6 +11,16 @@ interface StudentIndexPageProps {
 export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
 
     const { carnet, grupo, informes, nombre, imagen } = usuario;
+
+    const { setInformes, setInformeActivo, setUsuarioActivo } = useContext(InformeContext);
+
+    useEffect(() => {
+        setInformes(usuario.informes);
+        setUsuarioActivo(usuario);
+    }, [usuario])
+
+
+
 
     // console.log(usuario)
 
@@ -47,8 +58,8 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
 
                 {
                     informes.map((informe) => (
-                        <Link to="informes">
-                            <article className="w-11/12 border md:w-1/3 flex justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm">
+                        <>
+                            <Link to="informes" onClick={() => setInformeActivo(informe)} className="w-11/12 border md:w-1/3 flex justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm">
                                 <div className="mt-2 p-2 w-2/3">
                                     <h3 className="text-sm font-medium text-gray-400">Hace {getFormatDistanceToNow(informe.fecha.toDate().getTime())}</h3>
                                     {/* <h3 className="text-sm font-medium text-gray-400">{formatDateToWords(informe.fecha.toDate().getTime())}</h3> */}
@@ -69,9 +80,9 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
                                         className=" w-full h-auto rounded-lg"
                                     />
                                 </div>
-                            </article>
+                            </Link>
                             <hr className="my-4 mx-5" />
-                        </Link>
+                        </>
 
                     ))
                 }

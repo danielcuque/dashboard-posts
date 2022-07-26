@@ -6,7 +6,7 @@ export const StudentReport = () => {
     return (
         <>
             <PracticeReport />
-            <SidebarPost idPost="1" idUser="1" userName="Daniel Cuque" />
+            <SidebarPost />
         </>
     )
 }

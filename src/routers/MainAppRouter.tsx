@@ -13,6 +13,11 @@ export const MainAppRouter = () => {
             <Route path="/estudiante/:nombre" element={<StudentPage />} />
             <Route path="/estudiante/:nombre/informes" element={<StudentReport />} />
 
+            {/* TODO: */}
+            {/* SETERAR Practica Activa  */}
+            <Route path="/estudiante/:nombre/informes/:numero" element={<StudentReport />} />
+
+
             {/* Ruta de proteccion */}
             <Route path="/*" element={<IndexPage />} />
 
