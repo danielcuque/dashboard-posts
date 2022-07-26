@@ -1,4 +1,4 @@
-import { Avatar } from "./Avatar";
+import { InformationByUser } from "./InformationByUser";
 import { BodyPost } from "./BodyPost";
 import { TitlePost } from "./TitlePost";
 
@@ -8,7 +8,7 @@ const provisionalText =
 export const PracticeReport = () => {
   return (
     <>
-      <section className="mx-52 flex-1">
+      <section className="ml-40 mr-[544px] flex-1">
         {/* El titulo por defecto pienso que van a ser Practicas iniciales(?) */}
         <h1 className="mt-8 text-4xl font-bold">Prácticas Iniciales</h1>
         {/* Avatar
@@ -16,7 +16,7 @@ export const PracticeReport = () => {
       Fecha
       Carné
       */}
-        <Avatar
+        <InformationByUser
           userName="Daniel Cuque"
           datePosted="Jul 15"
           idUser="202112145"
