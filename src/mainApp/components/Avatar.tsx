@@ -6,7 +6,7 @@ type Props = {
 
 export const Avatar = ({ userName, datePosted, idUser }: Props) => {
   return (
-    <div className="mt-2">
+    <div className="mt-2 ">
       {/* Nombre del usuario */}
       <span className="text-lg">{userName} </span>
 
@@ -20,4 +20,4 @@ export const Avatar = ({ userName, datePosted, idUser }: Props) => {
       {/* Carné del estudiante */}
     </div>
   );
-};
+}

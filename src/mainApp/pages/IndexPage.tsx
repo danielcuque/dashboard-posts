@@ -1,8 +1,6 @@
 
 export const IndexPage = () => {
 
-    console.log(import.meta.env);
-
     return (
         <>
             <h1 className="bg-blue-800 text-center">Informacion estudiantes</h1>
