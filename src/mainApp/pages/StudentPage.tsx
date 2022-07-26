@@ -49,7 +49,7 @@ export const StudentPage = () => {
       <Routes>
         <Route path='/' element={<StudentIndexPage usuario={userData} />} />
         {/* Aca o se trabaja con context (algo como practicaActiva) o se tiene que encontrar una forma de pasarle el id  */}
-        <Route path='/:idInforme' element={<StudentReport />} />
+        <Route path='/informes' element={<StudentReport />} />
       </Routes>
     </>
   );
