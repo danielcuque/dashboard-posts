@@ -1,18 +1,16 @@
-import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { LoginPage } from '../dashboardApp/pages'
+import { Navigate, Route, Routes } from "react-router-dom";
+import { LoginPage } from "../dashboardApp/pages";
 
 export const DashboardRouter = () => {
-    return (
-        <Routes>
+  return (
+    <Routes>
+      {/* Login */}
+      <Route path="/" element={<LoginPage />} />
 
-            {/* Login */}
-            <Route path='/' element={<LoginPage />} />
+      {/* Otras rutas del dashboard (VERIFICAR ESTADO DE LA SESION ternario con la ruta de arriba)  */}
 
-            {/* Otras rutas del dashboard (VERIFICAR ESTADO DE LA SESION ternario con la ruta de arriba)  */}
-
-            {/* Ruta de proteccion */}
-            <Route path='/*' element={<Navigate to='/login' />} />
-        </Routes>
-    )
-}
+      {/* Ruta de proteccion */}
+      <Route path="/*" element={<Navigate to="/login" />} />
+    </Routes>
+  );
+};

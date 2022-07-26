@@ -1,15 +1,13 @@
 import { InformationByUser } from "./InformationByUser";
 import { BodyPost } from "./BodyPost";
 import { TitlePost } from "./TitlePost";
-import { useContext } from 'react';
-import { InformeContext } from '../context/';
-import { formatDateToWords } from '../../utils/dateFunctions';
-
+import { useContext } from "react";
+import { InformeContext } from "../context/";
+import { formatDateToWords } from "../../utils/dateFunctions";
+import { Navigate } from "react-router-dom";
 
 export const PracticeReport = () => {
-
-  const { informeActivo, usuarioActivo } = useContext(InformeContext)
-
+  const { informeActivo, usuarioActivo } = useContext(InformeContext);
 
   if (informeActivo && usuarioActivo) {
     return (
@@ -24,7 +22,9 @@ export const PracticeReport = () => {
           */}
           <InformationByUser
             userName={usuarioActivo.nombre}
-            datePosted={formatDateToWords(informeActivo.fecha.toDate().getTime())}
+            datePosted={formatDateToWords(
+              informeActivo.fecha.toDate().getTime()
+            )}
             idUser={usuarioActivo.carnet}
           />
           {/*
@@ -43,7 +43,6 @@ export const PracticeReport = () => {
       </>
     );
   } else {
-    return <></>
+    return <Navigate to="/" />;
   }
-
 };

@@ -34,7 +34,7 @@ export const IndexPage = () => {
                         <div className="flex flex-col w-2/3 justify-center items-center">
                             <h1 className="w-full text-xl text-left font-bold">Damian Ignacio Peña Afre</h1>
                             <h2 className="w-full text-lg text-gray-600">Grupo 9</h2>
-                            <h3 className="w-full text-lg text-gray-600"> Carnet: 202110568</h3>
+                            <h3 className="w-full text-lg text-gray-600"> Carné: 202110568</h3>
                         </div>
                     </article>
                 </Link>
@@ -51,7 +51,7 @@ export const IndexPage = () => {
                         <div className="flex flex-col w-2/3 justify-center items-center">
                             <h1 className="w-full text-xl text-left font-bold">Daniel Estuardo Cuque Ruiz</h1>
                             <h2 className="w-full text-lg text-gray-600">Grupo 9</h2>
-                            <h3 className="w-full text-lg text-gray-600"> Carnet: 2021 ... </h3>
+                            <h3 className="w-full text-lg text-gray-600"> Carné: 202112145 </h3>
                         </div>
                     </article>
                 </Link>
