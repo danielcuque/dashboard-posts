@@ -8,7 +8,7 @@ interface StudentIndexPageProps {
 
 export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
 
-    const { carnet, grupo, informes, nombre } = usuario;
+    const { carnet, grupo, informes, nombre, imagen } = usuario;
 
     console.log(informes)
 
@@ -26,8 +26,8 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
             <article className="w-full my-6 px-6 flex justify-start md:justify-center gap-x-7">
                 <div className="flex justify-center items-center">
                     <img
-                        src="https://res.cloudinary.com/denor5mso/image/upload/v1657944971/Porfolio/varios/ogimage_hokrsa.png"
-                        alt="LOGO USAC"
+                        src={imagen}
+                        alt={nombre}
                         className="w-12 h-12 md:w-20 md:h-20 rounded-full"
                     />
                 </div>

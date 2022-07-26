@@ -11,7 +11,7 @@ export const getReportByUser = async (uid: string) => {
 
         if (userSnap.exists()) {
 
-            const { carnet, grupo, nombre, informes: arrayInformesRef } = userSnap.data() as usuario;
+            const { carnet, grupo, nombre, informes: arrayInformesRef, imagen } = userSnap.data() as usuario;
 
 
             const informesPromises = arrayInformesRef.map(async (informeRef: any) => {
@@ -32,7 +32,7 @@ export const getReportByUser = async (uid: string) => {
                     imagen,
                     secciones,
                     titulo,
-                    categorias
+                    categorias,
                 }
             });
 
@@ -42,7 +42,8 @@ export const getReportByUser = async (uid: string) => {
                 carnet,
                 grupo,
                 nombre,
-                informes
+                informes,
+                imagen
             }
 
             return data;

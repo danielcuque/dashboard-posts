@@ -18,6 +18,8 @@ export const IndexPage = () => {
 
             </div>
 
+
+            {/* Esto se podria construir dinamicamente haciendo una consulta a los usuarios  y sus ids, para luego quitar el switch en StudentPage.tsx */}
             <div className='flex flex-col md:flex-row items-center justify-around mt-9 '>
 
                 <Link to="/estudiante/damian" className='w-4/5 md:w-2/5 shadow-md'>

@@ -38,5 +38,6 @@ export interface usuario {
     carnet: string,
     grupo: string,
     nombre: string,
+    imagen: string,
     informes: informe[]
 }
