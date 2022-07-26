@@ -5,13 +5,13 @@ export const StudentPage = () => {
   // En esta parte se recupera de la URL la información de los integrantes del grupo
 
   return (
-    <div className="mt-5 ml-5 flex flex-col">
+    <div className="flex">
       {/* Se podria utilizar un router aqui */}
       <PracticeReport />
 
       {/* Sidebar con las publicaciones del estudiante */}
 
-      <SidebarPost userName="Daniel Cuque" />
+      <SidebarPost idPost="1" idUser="1" userName="Daniel Cuque" />
     </div>
   );
 };
