@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface video {
     tipo: 'video',
     titulo: string,
@@ -25,9 +27,11 @@ export interface documento {
 export type componente = | video | parrafo | enlace | documento;
 
 export interface informe {
-    fecha: Date,
+    fecha: Timestamp,
     imagen: string,
-    secciones: componente[]
+    titulo: string,
+    secciones: componente[],
+    categorias: string[]
 }
 
 export interface usuario {

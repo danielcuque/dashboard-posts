@@ -1,7 +1,16 @@
+import { FC, useMemo, useState } from "react"
+import { usuario } from '../../interfaces/components';
+import { getFormatDistanceToNow, formatDateToWords } from '../../utils/dateFunctions';
 
-export const StudentIndexPage = () => {
+interface StudentIndexPageProps {
+    usuario: usuario
+}
 
-    const NoCards = [1, 2, 3, 4, 5]
+export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
+
+    const { carnet, grupo, informes, nombre } = usuario;
+
+    console.log(informes)
 
     return (
         <section className="min-h-screen flex flex-col">
@@ -23,9 +32,9 @@ export const StudentIndexPage = () => {
                     />
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                    <h1 className="w-full text-xl text-left font-bold">Damian Ignacio Peña Afre</h1>
-                    <h2 className="w-full text-lg text-gray-600">Grupo X</h2>
-                    <h3 className="w-full text-lg text-gray-600"> Carnet: 202110568</h3>
+                    <h1 className="w-full text-xl text-left font-bold">{nombre}</h1>
+                    <h2 className="w-full text-lg text-gray-600">{`Grupo: ${grupo} `}</h2>
+                    <h3 className="w-full text-lg text-gray-600"> {`Carnet: ${carnet}`} </h3>
                 </div>
             </article>
             <hr className="border mb-6 mx-5" />
@@ -36,23 +45,26 @@ export const StudentIndexPage = () => {
             <section className="flex flex-col md:flex-row md:flex-wrap">
 
                 {
-                    NoCards.map(() => (
+                    informes.map((informe) => (
                         <>
                             <article className="w-11/12 border md:w-1/3 flex justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm">
                                 <div className="mt-2 p-2 w-2/3">
-                                    <h3 className="text-sm font-medium text-gray-400">Jul 24</h3>
-                                    <h2 className="font-bold text-lg">Practica 1</h2>
+                                    {/* <h3 className="text-sm font-medium text-gray-400">{getFormatDistanceToNow(informe.fecha.toDate().getTime())}</h3> */}
+                                    <h3 className="text-sm font-medium text-gray-400">{formatDateToWords(informe.fecha.toDate().getTime())}</h3>
+                                    <h2 className="font-bold text-lg">{informe.titulo}</h2>
                                     {/* Badged */}
                                     <div className="my-4 flex flex-wrap gap-y-3 gap-x-2 justify-start ">
-                                        <span className="bg-gray-200 px-3 py-[1px] text-[10px] md:text-[12px]  rounded-2xl">Mantenimento preventivo</span>
-                                        <span className="bg-gray-200 px-3 py-[1px] text-[10px] md:text-[12px] rounded-2xl">Linux</span>
-                                        <span className="bg-gray-200 px-3 py-[1px] text-[10px] md:text-[12px] rounded-2xl">Repollo</span>
+                                        {
+                                            informe.categorias.map(categoria => (
+                                                <span className="bg-gray-200 px-3 py-[1px] text-[10px] md:text-[12px]  rounded-2xl">{categoria}</span>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className="flex justify-center w-1/3 items-center p-2">
                                     <img
-                                        src="https://res.cloudinary.com/denor5mso/image/upload/v1657950739/Porfolio/varios/colas_ntvold.png"
-                                        alt="LOGO USAC"
+                                        src={informe.imagen}
+                                        alt={informe.titulo}
                                         className=" w-full h-auto rounded-lg"
                                     />
                                 </div>

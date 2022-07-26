@@ -13,30 +13,28 @@ export const getReportByUser = async (uid: string) => {
 
             const { carnet, grupo, nombre, informes: arrayInformesRef } = userSnap.data() as usuario;
 
+            const informes: informe[] = []
 
-            const informesPromises = arrayInformesRef.map(async (informeRef: any) => {
+            arrayInformesRef.forEach(async (informeRef: any) => {
                 const informeSnap = await getDoc(informeRef);
                 const { fecha, imagen, secciones: arrayComponentesRef, titulo, categorias } = informeSnap.data() as informe
 
+                const secciones: componente[] = []
 
-                const seccionesPromises = arrayComponentesRef.map(async (componenteRef: any) => {
+                arrayComponentesRef.forEach(async (componenteRef: any) => {
                     const componenteSnap = await getDoc(componenteRef);
 
-                    return componenteSnap.data() as componente;
+                    secciones.push(componenteSnap.data() as componente)
                 })
 
-                const secciones = await Promise.all(seccionesPromises);
-
-                return {
+                informes.push({
                     fecha,
                     imagen,
                     secciones,
                     titulo,
                     categorias
-                }
+                })
             });
-
-            const informes: informe[] = await Promise.all(informesPromises)
 
             const data = {
                 carnet,
