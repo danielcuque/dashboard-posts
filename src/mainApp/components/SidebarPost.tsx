@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { usuario, informe } from '../../interfaces/components';
 import { useContext } from 'react';
 import { InformeContext } from '../context/';
 

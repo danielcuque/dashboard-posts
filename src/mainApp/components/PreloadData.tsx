@@ -1,6 +1,7 @@
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { useStudent } from '../../hooks/useStudent';
 import { useEffect } from 'react';
+import { Loader } from './Loader';
 
 export const PreloadData = () => {
 
@@ -41,7 +42,7 @@ export const PreloadData = () => {
             <Navigate to={`/estudiante/${nombre}/informes`} />
         )
     } else {
-        return (<p>Loading...</p>)
+        return (<Loader />)
     }
 
 }

@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { StudentIndexPage } from './StudentIndexPage';
 import { StudentReport } from './StudentReport';
 import { useStudent } from '../../hooks/useStudent';
+import { Loader } from '../components/Loader';
 
 export const StudentPage = () => {
 
@@ -17,7 +18,7 @@ export const StudentPage = () => {
       </>
     );
   } else {
-    return (<p>LOADING...</p>)
+    return (<Loader />)
   }
 
 
