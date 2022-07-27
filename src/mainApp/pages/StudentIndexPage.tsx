@@ -42,7 +42,7 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
                 key={`${index}-link`}
                 to="informes"
                 onClick={() => setInformeActivo(informe)}
-                className="w-11/12 border md:w-1/3 flex justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm"
+                className="w-11/12 border md:w-1/3 flex p-5 justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm"
               >
                 <div className="mt-2 p-2 w-2/3">
                   <h3 className="text-sm font-medium text-gray-400">
