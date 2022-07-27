@@ -1,12 +1,12 @@
+import { FormEvent } from "react"
 
 export const LoginForm = () => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+        
+    }
     return (
-        <form>
-            <label> Nombre: </label>
-            <input type="text" placeholder="Nombre" />
-            <button>
-                Ingresar
-            </button>
+        <form onSubmit={onSubmit} action="">
+            
         </form>
     )
 }

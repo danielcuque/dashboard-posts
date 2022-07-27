@@ -1,5 +1,3 @@
-
-import { TbLoader } from 'react-icons/tb'
 import { BiLoaderAlt } from 'react-icons/bi'
 
 export const Loader = () => {
