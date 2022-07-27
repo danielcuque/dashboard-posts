@@ -24,31 +24,14 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
     return (
       <section className="min-h-screen flex flex-col">
         <article className="mb-6 ">
-          <img
-            src="https://portal.ingenieria.usac.edu.gt/images/logo_facultad/fiusac_negro.png"
-            alt="Logo Usac"
-            className="w-4/5 mx-auto md:w-1/2 2xl:w-1/3 mt-4"
-          />
-        </article>
-
-        <article className="w-full my-6 px-6 flex justify-start md:justify-center gap-x-7">
-          <div className="flex justify-center items-center">
+          <Link to="/">
             <img
-              src={imagen}
-              alt={nombre}
-              className="w-12 h-12 md:w-20 md:h-20 rounded-full"
+              src="https://portal.ingenieria.usac.edu.gt/images/logo_facultad/fiusac_negro.png"
+              alt="Logo Usac"
+              className="w-4/5 mx-auto md:w-1/2 2xl:w-1/3 mt-4"
             />
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <h1 className="w-full text-xl text-left font-bold">{nombre}</h1>
-            <h2 className="w-full text-lg text-gray-600">{`Grupo: ${grupo} `}</h2>
-            <h3 className="w-full text-lg text-gray-600">
-              {" "}
-              {`Carnet: ${carnet}`}{" "}
-            </h3>
-          </div>
+          </Link>
         </article>
-        <hr className="border mb-6 mx-5" />
 
         {/* CARDS */}
 
@@ -92,7 +75,6 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
             </React.Fragment>
           ))}
         </section>
-
         <div className="my-6"></div>
       </section>
     );

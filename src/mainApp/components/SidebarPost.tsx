@@ -29,7 +29,7 @@ export const SidebarPost = () => {
             className={`${JSON.stringify(informe) == JSON.stringify(informeActivo)
               ? "bg-blue-200"
               : "bg-inherit"
-              } cursor-pointer hover:border rounded-md pl-2 ml-10 mb-4 `}
+              } cursor-pointer hover:border-gray-300 border border-white rounded-tl-md rounded-bl-md pl-2 ml-10 mb-4 `}
           >
             <h2 className="text-lg font-bold">{informe.titulo}</h2>
             <p className="text-sm text-subtitle">
