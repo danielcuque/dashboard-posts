@@ -24,11 +24,13 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
         return (
             <section className="min-h-screen flex flex-col">
                 <article className="mb-6 ">
-                    <img
-                        src="https://portal.ingenieria.usac.edu.gt/images/logo_facultad/fiusac_negro.png"
-                        alt="Logo Usac"
-                        className="w-4/5 mx-auto md:w-1/2 2xl:w-1/3 mt-4"
-                    />
+                    <Link to="/">
+                        <img
+                            src="https://portal.ingenieria.usac.edu.gt/images/logo_facultad/fiusac_negro.png"
+                            alt="Logo Usac"
+                            className="w-4/5 mx-auto md:w-1/2 2xl:w-1/3 mt-4"
+                        />
+                    </Link>
                 </article>
 
 
@@ -56,16 +58,16 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
                     {
                         informes.map((informe, index) => (
                             <React.Fragment key={index}>
-                                <Link key={`${index}-link`} to="informes" onClick={() => setInformeActivo(informe)} className="w-11/12 border md:w-1/3 flex justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm">
+                                <Link key={`${index}-link`} to="informes" onClick={() => setInformeActivo(informe)} className="w-11/12 border md:w-1/3 px-6  flex justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm">
                                     <div className="mt-2 p-2 w-2/3">
-                                        <h3 className="text-sm font-medium text-gray-400">Hace {getFormatDistanceToNow(informe.fecha.toDate().getTime())}</h3>
+                                        <h3 className="text-sm xl:text-lg font-medium text-gray-400">Hace {getFormatDistanceToNow(informe.fecha.toDate().getTime())}</h3>
                                         {/* <h3 className="text-sm font-medium text-gray-400">{formatDateToWords(informe.fecha.toDate().getTime())}</h3> */}
-                                        <h2 className="font-bold text-lg">{informe.titulo}</h2>
+                                        <h2 className="font-bold text-lg xl:text-2xl">{informe.titulo}</h2>
                                         {/* Badged */}
                                         <div className="my-4 flex flex-wrap gap-y-3 gap-x-2 justify-start ">
                                             {
                                                 informe.categorias.map((categoria, index) => (
-                                                    <span key={`${index}-span`} className="bg-gray-200 px-3 py-[1px] text-[10px] md:text-[12px]  rounded-2xl">{categoria}</span>
+                                                    <span key={`${index}-span`} className="bg-gray-200 px-3 py-[1px] text-[10px] md:text-[12px] xl:text-lg  rounded-2xl">{categoria}</span>
                                                 ))
                                             }
                                         </div>
