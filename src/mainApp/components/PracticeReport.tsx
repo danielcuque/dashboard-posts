@@ -4,7 +4,7 @@ import { TitlePost } from "./TitlePost";
 import { useContext } from "react";
 import { InformeContext } from "../context/";
 import { formatDateToWords } from "../../utils/dateFunctions";
-import { Navigate } from "react-router-dom";
+import { PreloadData } from "./PreloadData";
 
 export const PracticeReport = () => {
   const { informeActivo, usuarioActivo } = useContext(InformeContext);
@@ -13,13 +13,8 @@ export const PracticeReport = () => {
     return (
       <>
         <section className="ml-40 mr-[544px] flex-1">
-          {/* El titulo por defecto pienso que van a ser Practicas iniciales(?) */}
           <h1 className="mt-8 text-4xl font-bold">Prácticas Iniciales</h1>
-          {/* Avatar
-          Nombre
-          Fecha
-          Carné
-          */}
+
           <InformationByUser
             userName={usuarioActivo.nombre}
             datePosted={formatDateToWords(
@@ -27,10 +22,6 @@ export const PracticeReport = () => {
             )}
             idUser={usuarioActivo.carnet}
           />
-          {/*
-          Practica No. X
-          Subtema
-          */}
 
           <TitlePost
             titlePost={informeActivo.titulo}
@@ -43,6 +34,6 @@ export const PracticeReport = () => {
       </>
     );
   } else {
-    return <Navigate to="/" />;
+    return (<PreloadData />);
   }
 };

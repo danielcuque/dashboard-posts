@@ -26,7 +26,7 @@ export const SidebarPost = () => {
           {usuarioActivo.nombre}{" "}
         </h1>
         {usuarioActivo.informes.map((informe, index) => (
-          <div key={index} onClick={() => setInformeActivo(informe)} className={`${informe == informeActivo ? 'bg-blue-200' : 'bg-inherit'} cursor-pointer hover:border rounded-md pl-2 ml-10 mb-4 `}>
+          <div key={index} onClick={() => setInformeActivo(informe)} className={`${JSON.stringify(informe) == JSON.stringify(informeActivo) ? 'bg-blue-200' : 'bg-inherit'} cursor-pointer hover:border rounded-md pl-2 ml-10 mb-4 `}>
             <h2 className="text-lg font-bold">{informe.titulo}</h2>
             <p className="text-sm text-subtitle">{informe.categorias.toString()}</p>
           </div>

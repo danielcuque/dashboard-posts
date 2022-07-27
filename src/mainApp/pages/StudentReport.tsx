@@ -1,4 +1,3 @@
-import React from 'react'
 import { PracticeReport } from '../components'
 import { SidebarPost } from '../components/SidebarPost'
 
