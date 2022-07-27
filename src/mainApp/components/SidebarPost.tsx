@@ -8,7 +8,7 @@ export const SidebarPost = () => {
   if (usuarioActivo) {
     return (
       <aside
-        className="row-start-3 lg:fixed lg:flex lg:w-96 lg:h-screen lg:flex-col lg:border-l-2 lg:top-0 lg:right-0"
+        className="lg:fixed lg:flex lg:w-96 lg:h-screen lg:flex-col lg:border-l-2 lg:top-0 lg:right-0"
       >
         <Link to="/">
           <img

@@ -12,7 +12,7 @@ export const PracticeReport = () => {
   if (informeActivo && usuarioActivo) {
     return (
       <>
-        <section className="flex-1 lg:col-span-8">
+        <section className="flex-1 lg:col-span-7 lg:col-start-2">
           <h1 className="mt-8 text-4xl font-bold">Prácticas Iniciales</h1>
 
           <InformationByUser
