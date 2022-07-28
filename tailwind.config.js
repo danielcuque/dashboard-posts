@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         subtitle: "#757575",
+        login: "#EEF2F6",
       },
     },
   },

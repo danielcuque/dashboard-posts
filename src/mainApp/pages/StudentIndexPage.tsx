@@ -22,7 +22,7 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
 
   if (isInformesLoaded) {
     return (
-      <section className="min-h-screen flex flex-col">
+      <section className="min-h-screen flex flex-col animate__animated animate__fadeIn animate__faster">
         <article className="mb-6 ">
           <Link to="/">
             <img
