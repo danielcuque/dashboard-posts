@@ -16,7 +16,7 @@ export const IndexPage = () => {
       </div>
 
       {/* Esto se podria construir dinamicamente haciendo una consulta a los usuarios  y sus ids, para luego quitar el switch en StudentPage.tsx */}
-      <div className="flex flex-col md:flex-row items-center justify-around mt-9 ">
+      <div className="flex flex-col md:flex-row items-center justify-between mx-4 mt-9 gap-x-3 ">
         <Link to="/estudiante/damian" className="w-4/5 md:w-2/5 shadow-md">
           <article className="w-full my-6 px-6 flex justify-start md:justify-center gap-x-7">
             <div className="flex w-1/3 justify-center items-center">
@@ -60,6 +60,30 @@ export const IndexPage = () => {
             </div>
           </article>
         </Link>
+
+
+        <Link to="/estudiante/jose" className="w-4/5 md:w-2/5 shadow-md">
+          <article className="w-full my-6 px-6 flex justify-start md:justify-center gap-x-7">
+            <div className="flex w-1/3 justify-center items-center">
+              <img
+                src="https://avatars.githubusercontent.com/u/81493003?v=4"
+                alt="Daniel Cuque"
+                className="w-12 h-12 md:w-20 md:h-20 rounded-full"
+              />
+            </div>
+            <div className="flex flex-col w-2/3 justify-center items-center">
+              <h1 className="w-full text-xl text-left font-bold">
+                José Manuel López Lemus
+              </h1>
+              <h2 className="w-full text-lg text-gray-600">Grupo 9</h2>
+              <h3 className="w-full text-lg text-gray-600">
+                {" "}
+                Carné: 202100308{" "}
+              </h3>
+            </div>
+          </article>
+        </Link>
+
       </div>
     </section>
   );

@@ -24,6 +24,10 @@ export const useStudent = () => {
                 fetchData('TqLZBY3cFWb6t0Z20zNjfL5JUcB3');
                 break;
 
+            case 'jose':
+                fetchData('VCCQkPe65yM6xNfGKtjEgq9zKSW2');
+                break;
+
             default:
                 navigate('/');
                 break;

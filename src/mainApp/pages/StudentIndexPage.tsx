@@ -33,6 +33,23 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
           </Link>
         </article>
 
+
+        <article className="w-full my-6 px-6 flex justify-start md:justify-center gap-x-7">
+          <div className="flex justify-center items-center">
+            <img
+              src={imagen}
+              alt={nombre}
+              className="w-12 h-12 md:w-20 md:h-20 rounded-full"
+            />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="w-full text-xl text-left font-bold">{nombre}</h1>
+            <h2 className="w-full text-lg text-gray-600">{`Grupo: ${grupo} `}</h2>
+            <h3 className="w-full text-lg text-gray-600"> {`Carnet: ${carnet}`} </h3>
+          </div>
+        </article>
+        <hr className="border mb-6 mx-5" />
+
         {/* CARDS */}
 
         <section className="flex flex-col md:flex-row md:flex-wrap">
