@@ -1,11 +1,15 @@
 import { FC, ReactNode, useReducer } from 'react';
 import { informe, usuario } from '../../interfaces/components';
+import { Theme } from '../../interfaces/themes';
+import { damianStyles } from '../../theme/damianTheme';
 import { InformeContext, informeReducer } from './';
 
 export interface InformeState {
     informes: informe[],
     informeActivo: informe | null,
     usuarioActivo: usuario | null,
+    theme: Theme
+
 }
 
 interface InformeProviderProps {
@@ -14,7 +18,8 @@ interface InformeProviderProps {
 const Informe_INITIAL_STATE: InformeState = {
     informes: [],
     informeActivo: null,
-    usuarioActivo: null
+    usuarioActivo: null,
+    theme: damianStyles
 }
 
 
@@ -44,6 +49,13 @@ export const InformeProvider: FC<InformeProviderProps> = ({ children }) => {
         })
     }
 
+    const setTheme = (theme: Theme) => {
+        dispatch({
+            type: 'set-theme',
+            payload: theme
+        })
+    }
+
     return (
         <InformeContext.Provider value={{
             ...state,
@@ -52,7 +64,8 @@ export const InformeProvider: FC<InformeProviderProps> = ({ children }) => {
             // * funciones
             setInformeActivo,
             setInformes,
-            setUsuarioActivo
+            setUsuarioActivo,
+            setTheme
 
         }}>
             {children}

@@ -1,4 +1,5 @@
 import { informe, usuario } from '../../interfaces/components';
+import { Theme } from '../../interfaces/themes';
 import { InformeState } from './';
 
 type UIActionType =
@@ -13,6 +14,10 @@ type UIActionType =
     | {
         type: 'set-usuario-activo',
         payload: usuario
+    }
+    | {
+        type: 'set-theme',
+        payload: Theme
     }
 
 
@@ -35,6 +40,12 @@ export const informeReducer = (state: InformeState, action: UIActionType): Infor
             return {
                 ...state,
                 usuarioActivo: action.payload
+            }
+
+        case 'set-theme':
+            return {
+                ...state,
+                theme: action.payload
             }
         default:
             return state;

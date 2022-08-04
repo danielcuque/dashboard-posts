@@ -12,7 +12,7 @@ interface StudentIndexPageProps {
 export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
   const { carnet, grupo, informes, nombre, imagen } = usuario;
 
-  const { setInformes, setInformeActivo, setUsuarioActivo, isInformesLoaded } =
+  const { setInformes, setInformeActivo, setUsuarioActivo, isInformesLoaded, theme } =
     useStudent();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
 
   if (isInformesLoaded) {
     return (
-      <section className="min-h-screen flex flex-col animate__animated animate__fadeIn animate__faster">
+      <section className="min-h-screen flex flex-col animate__animated animate__fadeIn animate__faster" style={theme.mainContainerStyles}>
         <article className="mb-6 ">
           <Link to="/">
             <img
@@ -48,7 +48,7 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
             <h3 className="w-full text-lg text-gray-600"> {`Carnet: ${carnet}`} </h3>
           </div>
         </article>
-        <hr className="border mb-6 mx-5" />
+        <hr className="border mb-6 mx-5 border-gray-400" />
 
         {/* CARDS */}
 
@@ -59,7 +59,8 @@ export const StudentIndexPage: FC<StudentIndexPageProps> = ({ usuario }) => {
                 key={`${index}-link`}
                 to="informes"
                 onClick={() => setInformeActivo(informe)}
-                className="w-11/12 border md:w-1/3 flex p-5 justify-around mt-6 mx-auto hover:shadow-md cursor-pointer rounded-sm"
+                style={theme.card}
+                className="w-11/12 border md:w-1/3 flex p-5 justify-around mt-6 mx-auto shadow-md cursor-pointer rounded-sm"
               >
                 <div className="mt-2 p-2 w-2/3">
                   <h3 className="text-sm font-medium text-gray-400">
