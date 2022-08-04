@@ -1,9 +1,9 @@
 type Props = {
-    textContent: string;
+  textContent: string;
 }
 
-export const ParagraphPost = ({textContent}:Props) => {
+export const ParagraphPost = ({ textContent }: Props) => {
   return (
-    <p className="text-justify text-xl">{textContent}</p>
+    <p className="text-justify text-xl mt-4">{textContent}</p>
   )
 }
