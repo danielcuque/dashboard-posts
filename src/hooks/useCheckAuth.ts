@@ -10,9 +10,9 @@ export const useCheckAuth = () => {
     useEffect(() => {
         // ? Esto no se muy bien donde deberia
         onAuthStateChanged(FirebaseAuth, async (user) => {
-            if (!user) return logout();
+            if (!user) return logout(null);
             const { uid, email, displayName, photoURL } = user;
-            login({ uid, email, displayName, photoURL });
+            login({ uid, email, displayName, photoURL, errorMsg: null });
         })
 
     }, [])
