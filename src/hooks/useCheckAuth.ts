@@ -8,7 +8,6 @@ export const useCheckAuth = () => {
     const { logout, login, status } = state;
 
     useEffect(() => {
-        // ? Esto no se muy bien donde deberia
         onAuthStateChanged(FirebaseAuth, async (user) => {
             if (!user) return logout(null);
             const { uid, email, displayName, photoURL } = user;
