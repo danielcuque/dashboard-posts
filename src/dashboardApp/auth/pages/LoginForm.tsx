@@ -1,10 +1,14 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { useAuth } from '../../../hooks/useAuth';
+import Swal from 'sweetalert2'
 
 const tempUser = {
   email: "",
   password: "",
 };
 export const LoginForm = () => {
+
+  const { startLoginWithEmailAndPassword, errorMsg } = useAuth();
   const [user, setUser] = useState(tempUser);
 
   const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
@@ -12,10 +16,29 @@ export const LoginForm = () => {
     setUser({ ...user, [name]: value });
   };
 
+  useEffect(() => {
+    if (errorMsg) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: errorMsg
+      })
+    }
+  }, [errorMsg])
+
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(user);
+
+    startLoginWithEmailAndPassword({
+      email: user.email,
+      password: user.password
+    })
+
   };
+
+
+
 
   return (
     <div className="w-full h-screen flex flex-col justify-center bg-login animate__animated animate__fadeIn animate__faster">
@@ -50,7 +73,7 @@ export const LoginForm = () => {
           </label>
           <input
             autoComplete="off"
-            type="text"
+            type="password"
             name="password"
             placeholder="Contraseña"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-sky-500 placeholder-gray-300 focus:placeholder-gray-400"

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuth } from '../../hooks/useAuth';
 
 export const Navbar = () => {
+
+  const { startLogout, email } = useAuth();
+
   return (
     <div className="h-30 shadow-md flex p-5 justify-around items-center">
       <Link to="/">
@@ -12,8 +16,11 @@ export const Navbar = () => {
       </Link>
       {/* Nombre de usuario */}
       <div>
-        <b>Usuario</b>
+        <b>{email}</b>
       </div>
+      <button onClick={() => startLogout()}>
+        Cerrar sesión
+      </button >
     </div>
   );
 };
