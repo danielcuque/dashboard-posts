@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .icons-crud {
+    @apply text-gray-400 hover:text-gray-600 w-8 h-8;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    @apply transition ease-in-out delay-75;
+  }
+}
