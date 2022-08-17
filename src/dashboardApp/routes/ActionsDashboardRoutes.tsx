@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { MenuPost } from "../components/MenuPost";
+import { MenuPost } from "../components";
 import { CreatePost, EditPost } from "../pages";
 import { useAuth } from '../../hooks/useAuth';
 

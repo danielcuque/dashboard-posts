@@ -1,7 +1,13 @@
 import { format, parseISO } from "date-fns";
 import { FormEvent, useState } from "react";
-import { AiFillPlusCircle } from "react-icons/ai";
 import { useForm } from "../../hooks/useForm";
+import {
+  DocumentCreator,
+  ParagraphCreator,
+  UrlCreator,
+  VideoCreator,
+} from "../components";
+import { PostPreview } from "../components/PostPreview";
 
 const formInitialState = {
   titulo: "",
@@ -33,9 +39,14 @@ export const CreatePost = () => {
   return (
     <>
       <section className="p-10">
-        <h1 className="mt-8 mb-5 text-4xl font-bold">Create Post</h1>
         <form action="" onSubmit={onSubmit}>
           {/* Titulo del post */}
+          <div className="flex flex-row justify-between items-center mb-5">
+            <h1 className="my-1 text-4xl font-bold">Create Post</h1>
+            <button type="submit" className="buttons-crud">
+              Crear Post
+            </button>
+          </div>
           <input
             type="text"
             name="titulo"
@@ -69,19 +80,30 @@ export const CreatePost = () => {
           />
 
           {/* Contenedor de componentes dinámicos */}
-          <h1 className="mt-8 mb-5 text-4xl font-bold">Secciones</h1>
-          <div>
-            <button>
-              <AiFillPlusCircle />{" "}
-            </button>
+          <h1 className="mt-8 mb-5 text-2xl font-bold">Secciones</h1>
+          <div className="grid grid-cols-3 rounded-sm border border-neutral-300 divide-x divide-neutral-300">
+            {/* <button><AiFillPlusCircle />{" "}</button> */}
+            <div className="col-start-1  p-5">
+              <h2 className="font-bold text-2xl text-center mb-5 ">
+                Crear componente
+              </h2>
+              <div className="flex flex-col justify-between gap-6">
+                <DocumentCreator />
+                <ParagraphCreator />
+                <UrlCreator />
+                <VideoCreator />
+              </div>
+            </div>
+            <div className="col-start-2 p-5">
+              <PostPreview />
+            </div>
+            <div className="col-start-3 p-5">
+              <h2 className="font-bold text-2xl text-center ">
+                Librería de componentes
+              </h2>
+              <p>aksjdk</p>
+            </div>
           </div>
-
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Crear Post
-          </button>
         </form>
       </section>
     </>
