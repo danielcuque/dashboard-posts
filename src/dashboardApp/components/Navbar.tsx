@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from "../../hooks/useAuth";
 
 export const Navbar = () => {
-
   const { startLogout, email } = useAuth();
 
   return (
@@ -18,9 +17,12 @@ export const Navbar = () => {
       <div>
         <b>{email}</b>
       </div>
-      <button onClick={() => startLogout()}>
+      <button
+        className="bg-red-200 rounded-full px-4 py-2 font-bold hover:bg-red-400 fade-in"
+        onClick={() => startLogout()}
+      >
         Cerrar sesión
-      </button >
+      </button>
     </div>
   );
 };
