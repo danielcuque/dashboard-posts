@@ -8,6 +8,7 @@ type componentCollections =
     | 'parrafos'
     | 'videos';
 
+
 export const createComponent = async (collectionName: componentCollections, component: componente) => {
     try {
         const docRef = await addDoc(collection(FirebaseDB, collectionName), component);

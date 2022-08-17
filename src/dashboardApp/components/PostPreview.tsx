@@ -2,7 +2,6 @@ import { FC } from "react";
 import { componente } from "../../interfaces/components";
 import { DocumentEmbeded, UrlEmbeded, VideoEmbeded } from "../../mainApp/components/embededComponents";
 import { ParagraphPost } from "../../mainApp/components/ParagraphPost";
-import { VideoEntry, ParagraphEntry, UrlEntry, DocumentEntry } from "./";
 
 interface PostPreviewProps {
   componentes: componente[];
@@ -65,7 +64,6 @@ export const PostPreview: FC<PostPreviewProps> = ({ componentes, removeFunction 
           })
         }
       </div>
-
     </>
   );
 };

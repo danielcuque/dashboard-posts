@@ -6,6 +6,9 @@ import { SectionCreation } from "../components/SectionCreation";
 import { ComponentCreatorProvider } from "../context";
 import { useComponentCreator } from '../../hooks/useComponentCreator';
 import { componente } from '../../interfaces/components';
+import { createPostFirebase } from "../../utils/createPostFirebase";
+import { Timestamp } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 const formInitialState = {
   titulo: "",
@@ -23,7 +26,7 @@ export const CreatePost = () => {
 
   const { uid } = useDashboard();
 
-  const { componentsPost } = useComponentCreator();
+  const { componentsPost, clearPreview } = useComponentCreator();
 
   const { onInputChange, titulo, descripcion, imagen } =
     useForm<FormState>(formInitialState);
@@ -34,19 +37,33 @@ export const CreatePost = () => {
     setDate(e.currentTarget.value);
   };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     const data = {
       titulo,
       descripcion,
       imagen,
-      fecha: parseISO(date),
-      secciones: componentsPost.map((componente) => componente.id)
+      fecha: Timestamp.fromDate(parseISO(date)),
+      componentes: componentsPost.map((componente) => ({ id: componente.id as string, tipo: componente.tipo as string }))
     }
 
-    console.log(uid);
-    console.log(data);
+    // console.log(uid);
+    // console.log(data);
+
+    if (uid) {
+      const resp = await createPostFirebase(uid, data);
+      clearPreview()
+
+      if (resp.ok) {
+        Swal.fire(
+          'Post creado!',
+          'Poste creado!',
+        )
+      }
+    }
+
+
   };
 
   return (
