@@ -1,4 +1,3 @@
-import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { FormEvent, useState } from "react";
 
 export const ParagraphCreator = () => {

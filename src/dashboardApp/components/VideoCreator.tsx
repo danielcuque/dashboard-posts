@@ -1,5 +1,15 @@
-import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { FormEvent, useState } from "react";
+import { useForm } from "../../hooks/useForm";
+
+const formInitialState = {
+  titulo: "",
+  url: "",
+};
+
+type FormState = {
+  titulo: string;
+  url: string;
+};
 
 export const VideoCreator = () => {
   const initialMode = false;
@@ -9,16 +19,11 @@ export const VideoCreator = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const [VideoUrl, setVideoUrl] = useState("");
-
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    setVideoUrl(value);
-  };
+  const { onInputChange, titulo, url } = useForm<FormState>(formInitialState);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(VideoUrl);
+    console.log(titulo, url);
   };
 
   return (
@@ -39,8 +44,17 @@ export const VideoCreator = () => {
           >
             <input
               type="text"
-              onChange={handleInputChange}
-              name="video"
+              onChange={onInputChange}
+              value={titulo}
+              name="titulo"
+              placeholder="Título del video"
+              autoComplete="off"
+            />
+            <input
+              type="text"
+              onChange={onInputChange}
+              name="url"
+              value={url}
               placeholder="URL del video"
               autoComplete="off"
             />

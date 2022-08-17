@@ -1,5 +1,15 @@
-import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { FormEvent, useState } from "react";
+import { useForm } from "../../hooks/useForm";
+
+const formInitialState = {
+  nombre: "",
+  url: "",
+};
+
+type FormState = {
+  nombre: string;
+  url: string;
+};
 
 export const DocumentCreator = () => {
   const initialMode = false;
@@ -9,16 +19,11 @@ export const DocumentCreator = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const [documentUrl, setDocumentUrl] = useState("");
-
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    setDocumentUrl(value);
-  };
+  const { onInputChange, nombre, url } = useForm<FormState>(formInitialState);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(documentUrl);
+    console.log(nombre, url);
   };
 
   return (
@@ -39,8 +44,17 @@ export const DocumentCreator = () => {
           >
             <input
               type="text"
-              onChange={handleInputChange}
-              name="documeto"
+              onChange={onInputChange}
+              name="nombre"
+              value={nombre}
+              placeholder="Nombre del documento"
+              autoComplete="off"
+            />
+            <input
+              type="text"
+              onChange={onInputChange}
+              name="url"
+              value={url}
               placeholder="URL del documento"
               autoComplete="off"
             />
