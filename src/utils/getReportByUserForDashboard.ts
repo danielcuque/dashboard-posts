@@ -14,14 +14,13 @@ export const getReportByUserForDashboard = async (uid: string) => {
 
             const { carnet, grupo, nombre, informes: arrayInformesRef, imagen } = userSnap.data() as usuario;
 
-
             const informesPromises = arrayInformesRef.map(async (informeRef: any) => {
                 const informeSnap = await getDoc(informeRef);
 
                 const { fecha, imagen, secciones: arrayComponentesRef, titulo, categorias } = informeSnap.data() as informe
 
 
-                const seccionesPromises = arrayComponentesRef.map(async (componenteRef: any) => {
+                const seccionesPromises = arrayComponentesRef?.map(async (componenteRef: any) => {
                     const componenteSnap = await getDoc(componenteRef);
 
                     return componenteSnap.data() as componente;

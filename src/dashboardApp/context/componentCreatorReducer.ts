@@ -14,6 +14,9 @@ type ComponentCreatorActionType =
         type: 'ComponentCreator-remove-from-post'
         payload: componente
     }
+    | {
+        type: 'ComponentCreator-clear-preview',
+    }
 
 
 export const componentCreatorReducer = (state: ComponentCreatorState, action: ComponentCreatorActionType): ComponentCreatorState => {
@@ -34,6 +37,12 @@ export const componentCreatorReducer = (state: ComponentCreatorState, action: Co
             return {
                 ...state,
                 componentsPost: state.componentsPost.filter((prevComp) => prevComp.id !== action.payload.id)
+            }
+
+        case 'ComponentCreator-clear-preview':
+            return {
+                ...state,
+                componentsPost: []
             }
 
         default:

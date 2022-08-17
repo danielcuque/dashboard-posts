@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { MenuPost } from "../components";
 import { CreatePost, EditPost } from "../pages";
 import { useAuth } from '../../hooks/useAuth';
+import { ComponentCreatorProvider } from "../context";
 
 export const ActionsDashboardRoutes = () => {
 
@@ -12,15 +13,18 @@ export const ActionsDashboardRoutes = () => {
   }
 
   return (
-    <Routes>
-      {/* Create post */}
-      <Route path="create" element={<CreatePost />} />
+    <ComponentCreatorProvider>
+      <Routes>
 
-      {/* Edit post */}
-      <Route path="edit/:id" element={<EditPost />} />
+        {/* Create post */}
+        <Route path="create" element={<CreatePost />} />
 
-      {/* Main dash */}
-      <Route path="/*" element={<MenuPost />} />
-    </Routes>
+        {/* Edit post */}
+        <Route path="edit/:id" element={<EditPost />} />
+
+        {/* Main dash */}
+        <Route path="/*" element={<MenuPost />} />
+      </Routes>
+    </ComponentCreatorProvider>
   );
 };

@@ -7,6 +7,7 @@ interface ContextProps {
     refreshLibrary: () => Promise<void>,
     addToPost: (component: componente) => void,
     removeFromPost: (component: componente) => void,
+    clearPreview: () => void
 
 }
 

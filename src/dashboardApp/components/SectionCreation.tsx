@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 export const SectionCreation = () => {
 
-    const { componentsLibrary, refreshLibrary } = useComponentCreator();
+    const { componentsLibrary, refreshLibrary, addToPost, componentsPost, removeFromPost } = useComponentCreator();
 
     useEffect(() => {
         refresh()
@@ -47,12 +47,12 @@ export const SectionCreation = () => {
                 {/* Preview */}
 
                 <div className="col-start-2 p-5">
-                    <PostPreview />
+                    <PostPreview componentes={componentsPost} removeFunction={removeFromPost} />
                 </div>
 
                 {/* Libreria */}
 
-                <ComponentLibrary componentes={componentsLibrary} />
+                <ComponentLibrary componentes={componentsLibrary} addFunction={addToPost} />
             </div>
         </>
     )

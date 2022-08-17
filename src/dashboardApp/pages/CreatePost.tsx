@@ -1,8 +1,11 @@
 import { format, parseISO } from "date-fns";
 import { FormEvent, useState } from "react";
+import { useDashboard } from "../../hooks/useDashboard";
 import { useForm } from "../../hooks/useForm";
 import { SectionCreation } from "../components/SectionCreation";
 import { ComponentCreatorProvider } from "../context";
+import { useComponentCreator } from '../../hooks/useComponentCreator';
+import { componente } from '../../interfaces/components';
 
 const formInitialState = {
   titulo: "",
@@ -17,6 +20,11 @@ type FormState = {
 };
 
 export const CreatePost = () => {
+
+  const { uid } = useDashboard();
+
+  const { componentsPost } = useComponentCreator();
+
   const { onInputChange, titulo, descripcion, imagen } =
     useForm<FormState>(formInitialState);
 
@@ -28,7 +36,17 @@ export const CreatePost = () => {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(parseISO(date));
+
+    const data = {
+      titulo,
+      descripcion,
+      imagen,
+      fecha: parseISO(date),
+      secciones: componentsPost.map((componente) => componente.id)
+    }
+
+    console.log(uid);
+    console.log(data);
   };
 
   return (
@@ -76,9 +94,7 @@ export const CreatePost = () => {
 
 
         </form>
-        <ComponentCreatorProvider>
-          <SectionCreation />
-        </ComponentCreatorProvider>
+        <SectionCreation />
       </section>
     </>
   );

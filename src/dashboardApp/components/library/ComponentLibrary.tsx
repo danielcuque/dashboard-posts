@@ -4,13 +4,11 @@ import { DocumentEmbeded, UrlEmbeded, VideoEmbeded } from '../../../mainApp/comp
 import { ParagraphPost } from '../../../mainApp/components/ParagraphPost';
 
 interface ComponentLibraryProps {
-    componentes: componente[]
+    componentes: componente[];
+    addFunction: (componente: componente) => void;
 }
 
-export const ComponentLibrary: FC<ComponentLibraryProps> = ({ componentes }) => {
-
-    console.log(componentes)
-
+export const ComponentLibrary: FC<ComponentLibraryProps> = ({ componentes, addFunction }) => {
 
     return (
         <div className="col-start-3 p-5">
@@ -24,9 +22,9 @@ export const ComponentLibrary: FC<ComponentLibraryProps> = ({ componentes }) => 
                         switch (componente.tipo) {
                             case 'documento':
                                 return (
-                                    <div className='border border-gray-600 my-3 rounded-lg p-2'>
-                                        <DocumentEmbeded key={index} nameDocument={componente.nombre} urlDocument={componente.url} />
-                                        <button className='buttons-crud w-full mt-2 '>
+                                    <div className='border border-gray-600 my-3 rounded-lg p-2' key={index}>
+                                        <DocumentEmbeded nameDocument={componente.nombre} urlDocument={componente.url} />
+                                        <button className='buttons-crud w-full mt-2 ' onClick={() => addFunction(componente)}>
                                             Añadir al post
                                         </button>
                                     </div>
@@ -34,9 +32,9 @@ export const ComponentLibrary: FC<ComponentLibraryProps> = ({ componentes }) => 
 
                             case 'enlace':
                                 return (
-                                    <div className='border border-gray-600 my-3 rounded-lg p-2'>
-                                        <UrlEmbeded key={index} nameUrl={componente.nombre} url={componente.url} />
-                                        <button className='buttons-crud w-full mt-2 '>
+                                    <div className='border border-gray-600 my-3 rounded-lg p-2' key={index}>
+                                        <UrlEmbeded nameUrl={componente.nombre} url={componente.url} />
+                                        <button className='buttons-crud w-full mt-2 ' onClick={() => addFunction(componente)}>
                                             Añadir al post
                                         </button>
                                     </div>
@@ -44,21 +42,21 @@ export const ComponentLibrary: FC<ComponentLibraryProps> = ({ componentes }) => 
 
                             case 'parrafo':
                                 return (
-                                    <div className='border border-gray-600 my-3 rounded-lg p-2'>
+                                    <div className='border border-gray-600 my-3 rounded-lg p-2' key={index}
+                                    >
 
-                                        <ParagraphPost key={index} textContent={componente.texto} />
-                                        <button className='buttons-crud w-full mt-2 '>
+                                        <ParagraphPost textContent={componente.texto} />
+                                        <button className='buttons-crud w-full mt-2 ' onClick={() => addFunction(componente)}>
                                             Añadir al post
                                         </button>
                                     </div>
                                 )
 
                             case 'video':
-                                console.log(componente.url)
                                 return (
-                                    <div className='border border-gray-600 my-3 rounded-lg p-2-3'>
-                                        <VideoEmbeded key={index} titleVideo={componente.titulo} urlVideo={componente.url} />
-                                        <button className='buttons-crud w-full mt-2 '>
+                                    <div className='border border-gray-600 my-3 rounded-lg p-2-3' key={index}>
+                                        <VideoEmbeded titleVideo={componente.titulo} urlVideo={componente.url} />
+                                        <button className='buttons-crud w-full mt-2 ' onClick={() => addFunction(componente)}>
                                             Añadir al post
                                         </button>
                                     </div>

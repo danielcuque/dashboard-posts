@@ -46,13 +46,21 @@ export const ComponentCreatorProvider: FC<ComponentCreatorProviderProps> = ({ ch
         })
     }
 
+    const clearPreview = () => {
+        dispatch({
+            type: 'ComponentCreator-clear-preview',
+
+        })
+    }
+
     return (
         < ComponentCreatorContext.Provider value={{
             ...state,
             // * Methods
             refreshLibrary,
             addToPost,
-            removeFromPost
+            removeFromPost,
+            clearPreview
         }}>
             {children}
         </ ComponentCreatorContext.Provider>
