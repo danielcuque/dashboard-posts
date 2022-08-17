@@ -1,5 +1,15 @@
-import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { FormEvent, useState } from "react";
+import { useForm } from "../../hooks/useForm";
+
+const formInitialStae = {
+  nombre: "",
+  url: "",
+};
+
+type FormState = {
+  nombre: string;
+  url: string;
+};
 
 export const UrlCreator = () => {
   const initialMode = false;
@@ -9,16 +19,11 @@ export const UrlCreator = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const [Url, setUrl] = useState("");
-
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    setUrl(value);
-  };
+  const { onInputChange, nombre, url } = useForm<FormState>(formInitialStae);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(Url);
+    console.log(nombre, url);
   };
 
   return (
@@ -39,9 +44,18 @@ export const UrlCreator = () => {
           >
             <input
               type="text"
-              onChange={handleInputChange}
+              onChange={onInputChange}
+              name="nombre"
+              value={nombre}
+              placeholder="Nombre del enlace"
+              autoComplete="off"
+            />
+            <input
+              type="text"
+              onChange={onInputChange}
               name="url"
-              placeholder="URL"
+              value={url}
+              placeholder="URL del enlace"
               autoComplete="off"
             />
             <div className="flex justify-between">
