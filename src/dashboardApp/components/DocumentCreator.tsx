@@ -1,5 +1,9 @@
 import { FormEvent, useState } from "react";
+import { useComponentCreator } from "../../hooks/useComponentCreator";
 import { useForm } from "../../hooks/useForm";
+import { createComponent } from "../../utils/createComponent";
+import { documento } from "../../interfaces/components";
+import Swal from "sweetalert2";
 
 const formInitialState = {
   nombre: "",
@@ -12,6 +16,8 @@ type FormState = {
 };
 
 export const DocumentCreator = () => {
+  const { refreshLibrary } = useComponentCreator();
+
   const initialMode = false;
   const [isFormOpen, setIsFormOpen] = useState(initialMode);
 
@@ -19,11 +25,22 @@ export const DocumentCreator = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const { onInputChange, nombre, url } = useForm<FormState>(formInitialState);
+  const { onInputChange, onResetForm, nombre, url } =
+    useForm<FormState>(formInitialState);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(nombre, url);
+    const newComponent: documento = {
+      tipo: "documento",
+      nombre: nombre,
+      url: url,
+    };
+    const resp = await createComponent("documentos", newComponent);
+    if (resp.ok) {
+      Swal.fire("¡Listo!", "Se ha creado el documento correctamente");
+      onResetForm();
+      refreshLibrary();
+    }
   };
 
   return (

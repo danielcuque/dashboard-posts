@@ -1,5 +1,9 @@
 import { FormEvent, useState } from "react";
+import Swal from "sweetalert2";
+import { useComponentCreator } from "../../hooks/useComponentCreator";
 import { useForm } from "../../hooks/useForm";
+import { video } from "../../interfaces/components";
+import { createComponent } from "../../utils/createComponent";
 
 const formInitialState = {
   titulo: "",
@@ -12,6 +16,7 @@ type FormState = {
 };
 
 export const VideoCreator = () => {
+  const { refreshLibrary } = useComponentCreator();
   const initialMode = false;
   const [isFormOpen, setIsFormOpen] = useState(initialMode);
 
@@ -19,11 +24,22 @@ export const VideoCreator = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const { onInputChange, titulo, url } = useForm<FormState>(formInitialState);
+  const { onInputChange, onResetForm, titulo, url } =
+    useForm<FormState>(formInitialState);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(titulo, url);
+    const newComponent: video = {
+      tipo: "video",
+      titulo: titulo,
+      url: url,
+    };
+    const resp = await createComponent("videos", newComponent);
+    if (resp.ok) {
+      Swal.fire("¡Listo!", "Se ha creado el documento correctamente");
+      onResetForm();
+      refreshLibrary();
+    }
   };
 
   return (

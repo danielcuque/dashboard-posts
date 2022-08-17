@@ -1,5 +1,9 @@
 import { FormEvent, useState } from "react";
+import Swal from "sweetalert2";
+import { useComponentCreator } from "../../hooks/useComponentCreator";
 import { useForm } from "../../hooks/useForm";
+import { enlace } from "../../interfaces/components";
+import { createComponent } from "../../utils/createComponent";
 
 const formInitialStae = {
   nombre: "",
@@ -12,6 +16,7 @@ type FormState = {
 };
 
 export const UrlCreator = () => {
+  const { refreshLibrary } = useComponentCreator();
   const initialMode = false;
   const [isFormOpen, setIsFormOpen] = useState(initialMode);
 
@@ -19,11 +24,22 @@ export const UrlCreator = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const { onInputChange, nombre, url } = useForm<FormState>(formInitialStae);
+  const { onInputChange, onResetForm, nombre, url } =
+    useForm<FormState>(formInitialStae);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(nombre, url);
+    const newComponent: enlace = {
+      tipo: "enlace",
+      nombre: nombre,
+      url: url,
+    };
+    const resp = await createComponent("enlaces", newComponent);
+    if (resp.ok) {
+      Swal.fire("¡Listo!", "Se ha creado el documento correctamente");
+      onResetForm();
+      refreshLibrary();
+    }
   };
 
   return (

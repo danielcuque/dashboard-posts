@@ -1,6 +1,21 @@
 import { FormEvent, useState } from "react";
+import { createComponent } from "../../utils/createComponent";
+import { parrafo } from "../../interfaces/components";
+import { useForm } from "../../hooks/useForm";
+import Swal from "sweetalert2";
+import { useComponentCreator } from "../../hooks/useComponentCreator";
+
+const formInitialState = {
+  texto: "",
+};
+
+type FormState = {
+  texto: string;
+};
 
 export const ParagraphCreator = () => {
+  const { refreshLibrary } = useComponentCreator();
+  
   const initialMode = false;
   const [isFormOpen, setIsFormOpen] = useState(initialMode);
 
@@ -8,16 +23,22 @@ export const ParagraphCreator = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const [paragraphText, setParagraphText] = useState("");
+  const { onInputChange, onResetForm, texto } =
+    useForm<FormState>(formInitialState);
 
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    setParagraphText(value);
-  };
-
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(paragraphText);
+    const newComponent: parrafo = {
+      tipo: "parrafo",
+      subtitulo: "",
+      texto: texto,
+    };
+    const resp = await createComponent("parrafos", newComponent);
+    if (resp.ok) {
+      Swal.fire("¡Listo!", "Se ha creado el documento correctamente");
+      onResetForm();
+      refreshLibrary();
+    }
   };
 
   return (
@@ -38,8 +59,9 @@ export const ParagraphCreator = () => {
           >
             <input
               type="text"
-              onChange={handleInputChange}
-              name="parrafo"
+              onChange={onInputChange}
+              name="texto"
+              value={texto}
               placeholder="Ingrese una descripción"
               autoComplete="off"
             />
