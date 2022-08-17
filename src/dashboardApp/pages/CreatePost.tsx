@@ -2,6 +2,7 @@ import { format, parseISO } from "date-fns";
 import { FormEvent, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { SectionCreation } from "../components/SectionCreation";
+import { ComponentCreatorProvider } from "../context";
 
 const formInitialState = {
   titulo: "",
@@ -73,9 +74,11 @@ export const CreatePost = () => {
             value={imagen}
           />
 
-          <SectionCreation />
 
         </form>
+        <ComponentCreatorProvider>
+          <SectionCreation />
+        </ComponentCreatorProvider>
       </section>
     </>
   );

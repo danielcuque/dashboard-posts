@@ -5,9 +5,24 @@ import {
     VideoCreator,
 } from "../components";
 import { PostPreview } from "../components/PostPreview";
+import { ComponentLibrary } from "./library/ComponentLibrary";
+import { ComponentCreatorProvider } from '../context/ComponentCreatorProvider';
+import { useComponentCreator } from '../../hooks/useComponentCreator';
+import { useEffect } from 'react';
 
 
 export const SectionCreation = () => {
+
+    const { componentsLibrary, refreshLibrary } = useComponentCreator();
+
+    useEffect(() => {
+        refresh()
+    }, [])
+
+    const refresh = async () => {
+        await refreshLibrary()
+    }
+
     return (
         <>
             {/* Contenedor de componentes dinámicos */}
@@ -37,12 +52,7 @@ export const SectionCreation = () => {
 
                 {/* Libreria */}
 
-                <div className="col-start-3 p-5">
-                    <h2 className="font-bold text-2xl text-center ">
-                        Librería de componentes
-                    </h2>
-                    <p>aksjdk</p>
-                </div>
+                <ComponentLibrary componentes={componentsLibrary} />
             </div>
         </>
     )
