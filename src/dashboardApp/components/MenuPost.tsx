@@ -1,14 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import { InformeContext } from "../../mainApp/context";
 
 import { CardPost } from "./CardPost";
 import { Navbar } from "./Navbar";
+import { useDashboard } from '../../hooks/useDashboard';
 
 export const MenuPost = () => {
-  const { setInformeActivo, usuarioActivo, informeActivo, theme } =
-    useContext(InformeContext);
+
+  const { uid, informes } = useDashboard();
   const numberOfPosts = 2;
+
   return (
     <>
       <Navbar />
@@ -21,16 +23,20 @@ export const MenuPost = () => {
 
           {/* Creación de un nuevo post */}
           <Link
-            to="/create"
+            to="/dashboard/create"
             className="py-2 px-8 rounded-full border shadow-md hover:shadow-lg fade-in"
+
           >
             + NUEVO POST
           </Link>
         </div>
         {/* Lista de todas las publicaciones del usuario */}
         <section className="mt-5 flex flex-col justify-start">
-          <CardPost />
-          <CardPost />
+          {
+            informes.map(informe => (
+              <CardPost informe={informe} key={informe.id} />
+            ))
+          }
         </section>
       </main>
     </>

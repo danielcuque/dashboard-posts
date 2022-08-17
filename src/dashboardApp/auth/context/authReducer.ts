@@ -22,8 +22,6 @@ type AuthActionType =
 export const AuthReducer = (state: AuthState, action: AuthActionType): AuthState => {
     switch (action.type) {
         case 'Auth-login':
-
-            console.log(action.payload.errorMsg)
             return {
                 ...state,
                 status: 'authenticated',

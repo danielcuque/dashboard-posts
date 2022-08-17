@@ -27,6 +27,7 @@ export interface documento {
 export type componente = | video | parrafo | enlace | documento;
 
 export interface informe {
+    id?: string,
     fecha: Timestamp,
     imagen: string,
     titulo: string,
