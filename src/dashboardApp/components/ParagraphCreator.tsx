@@ -1,15 +1,63 @@
-import { AiFillPlusCircle } from "react-icons/ai";
-import { VideoEntry } from "./";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
+import { FormEvent, useState } from "react";
+
 export const ParagraphCreator = () => {
+  const initialMode = false;
+  const [isFormOpen, setIsFormOpen] = useState(initialMode);
+
+  const toogleForm = () => {
+    setIsFormOpen(!isFormOpen);
+  };
+
+  const [paragraphText, setParagraphText] = useState("");
+
+  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    setParagraphText(value);
+  };
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log(paragraphText);
+  };
+
   return (
-    <form className="flex flex-col gap-4 w-full justify-center">
-      <div className="flex justify-between">
-        <p className="buttons-crud w-1/2 text-center">Párrafo</p>
-        <button>
-          <AiFillPlusCircle className="icons-crud text-blue-500" />
+    <div className="flex flex-col gap-4 w-full justify-center">
+      <div className="flex w-full">
+        <button
+          onClick={toogleForm}
+          className="buttons-crud w-full text-center"
+        >
+          Añadir párrafo
         </button>
       </div>
-      <VideoEntry />
-    </form>
+      {isFormOpen ? (
+        <>
+          <form
+            onSubmit={onSubmit}
+            className="flex flex-col gap-4 w-full justify-center"
+          >
+            <input
+              type="text"
+              onChange={handleInputChange}
+              name="parrafo"
+              placeholder="Ingrese una descripción"
+              autoComplete="off"
+            />
+            <div className="flex justify-between">
+              <button
+                className="flex border border-red-400 py-2 px-4 text-red-500  rounded-sm"
+                onClick={toogleForm}
+              >
+                Cancelar
+              </button>
+              <button className="buttons-crud">Guardar</button>
+            </div>
+          </form>
+        </>
+      ) : (
+        <></>
+      )}
+    </div>
   );
 };
