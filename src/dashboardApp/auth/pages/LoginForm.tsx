@@ -59,7 +59,7 @@ export const LoginForm = () => {
           <input
             name="email"
             type="text"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-sky-500 placeholder-gray-300 focus:placeholder-gray-400"
+            // className=""
             placeholder="Email"
             onChange={handleInputChange}
           />
@@ -76,7 +76,7 @@ export const LoginForm = () => {
             type="password"
             name="password"
             placeholder="Contraseña"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-sky-500 placeholder-gray-300 focus:placeholder-gray-400"
+            // className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-sky-500 placeholder-gray-300 focus:placeholder-gray-400"
             onChange={handleInputChange}
           />
         </div>
