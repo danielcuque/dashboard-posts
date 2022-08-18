@@ -16,7 +16,7 @@ export const CardPost: FC<CardPostProps> = ({ informe }) => {
       <div className="mt-2 w-2/3 flex flex-row gap-3 items-center cursor-pointer">
         <figure>
           <img
-            src="https://hardzone.es/app/uploads-hardzone.es/2020/05/Mantenimiento-PC.jpg"
+            src={informe.imagen}
             alt=""
             className="w-32 h-auto rounded-lg"
           />

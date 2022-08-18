@@ -8,7 +8,7 @@ export const StudentReport = () => {
   const { theme } = useStudent();
 
   return (
-    <div style={theme.mainContainerStyles} className="grid grid-col-1 p-10 gap-4 lg:grid-cols-12 animate__animated animate__fadeIn animate__faster">
+    <div style={theme.mainContainerStyles} className="grid grid-col-1 min-h-screen p-10 gap-4 lg:grid-cols-12 animate__animated animate__fadeIn animate__faster">
       <Link to="/">
         <img
           src="https://portal.ingenieria.usac.edu.gt/images/logo_facultad/fiusac_negro.png"

@@ -10,8 +10,12 @@ export const useDashboard = () => {
     const { setInformes, informes } = useContext(InformeContext);
 
     const fetchData = async (id: string) => {
-        const data = await getReportByUserForDashboard(id) as usuario;
-        setInformes(data.informes);
+        try {
+            const data = await getReportByUserForDashboard(id) as usuario;
+            setInformes(data.informes);
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {

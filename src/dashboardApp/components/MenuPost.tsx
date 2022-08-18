@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import { InformeContext } from "../../mainApp/context";
 
 import { CardPost } from "./CardPost";
 import { Navbar } from "./Navbar";
@@ -9,7 +7,6 @@ import { useDashboard } from '../../hooks/useDashboard';
 export const MenuPost = () => {
 
   const { uid, informes } = useDashboard();
-  const numberOfPosts = 2;
 
   return (
     <>
@@ -19,7 +16,7 @@ export const MenuPost = () => {
       <main className="mt-10 px-20">
         <div className="flex justify-between items-center">
           {/* Mostrar la cantidad de publicaciones que tiene el usuario */}
-          <p className="text-lg">Todos ({numberOfPosts})</p>
+          <p className="text-lg">Todos ({informes.length})</p>
 
           {/* Creación de un nuevo post */}
           <Link
