@@ -15,7 +15,7 @@ type FormState = {
 
 export const ParagraphCreator = () => {
   const { refreshLibrary } = useComponentCreator();
-  
+
   const initialMode = false;
   const [isFormOpen, setIsFormOpen] = useState(initialMode);
 
@@ -57,8 +57,7 @@ export const ParagraphCreator = () => {
             onSubmit={onSubmit}
             className="flex flex-col gap-4 w-full justify-center"
           >
-            <input
-              type="text"
+            <textarea
               onChange={onInputChange}
               name="texto"
               value={texto}
